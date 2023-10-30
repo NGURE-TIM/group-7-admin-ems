@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:admin/homepage/Data/utilities.dart';
 import 'package:fl_chart/fl_chart.dart';
+import 'package:admin/homepage/Data/trends.dart';
 import 'package:admin/homepage/loadpages/load.dart';
 import'package:admin/homepage/Constants/colorConsts/colors.dart';
 import 'package:admin/homepage/energy consumption/energy.dart';
@@ -159,3 +160,117 @@ buildRows (String x , double y){
   );
 
 }
+
+
+
+
+class buildBarChart extends StatelessWidget {
+   String metric;
+  Color x;
+
+  buildBarChart(this.metric , this.x);
+  @override
+  Widget build(BuildContext context) {
+    return BarChart(
+        BarChartData(
+            barTouchData: BarTouchData(
+              enabled: true,
+              touchTooltipData: BarTouchTooltipData(
+                  tooltipBgColor: Colors.blueGrey,
+                  getTooltipItem: (BarChartGroupData z , int y , BarChartRodData g , int l){
+                    String month;
+                    List months=[];
+                    for(Trends y in myTrends){
+                      months.add(y.month);
+                    }
+                    if(z.x >=0 && z.x < months.length ){
+                      month=months[z.x];
+                    }
+                    else {
+                      throw Error();
+                    }
+                    return BarTooltipItem(
+                      '$month\n',
+
+                      const TextStyle(
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 18,
+                      ),
+                      children: <TextSpan>[
+                        TextSpan(
+                          text: (g.toY - 1).toString(),
+                          style: TextStyle(
+                            color: Colors.green,
+                            fontSize: 16,
+                            fontWeight: FontWeight.w500,
+                          ),
+                        ),
+                      ],
+                    );
+                  }
+              ),
+
+            ),
+            borderData: FlBorderData(
+                border: const Border(
+                  top: BorderSide.none,
+                  right: BorderSide.none,
+                  left: BorderSide(
+                      color: Colors.deepOrange
+                  ),
+                  bottom: BorderSide(
+                      color: Colors.deepOrange
+                  ),
+                )),
+            groupsSpace: 10,
+            titlesData:FlTitlesData(
+                show: true,
+                leftTitles: AxisTitles(
+                    axisNameWidget: Text(
+                        metric.toUpperCase()
+                    )
+                ),
+                bottomTitles: AxisTitles(
+                    axisNameWidget: Text(
+                        'MONTHS'
+                    )
+                )
+            ) ,
+            barGroups: barChartGroupData(myTrends,metric ,x)
+
+        ));
+  }
+}
+
+List<BarChartGroupData>? barChartGroupData (List<Trends> barData,String metric,Color color){
+  List<BarChartGroupData> sections=[];
+  int index=-1;
+  for (Trends x in barData) {
+
+    index++;
+    late double metricValue;
+    if (metric=='kwh'){
+      metricValue=x.kwh;
+    }
+    else{
+      metricValue=x.cost;
+    }
+    sections.add( BarChartGroupData(
+      x:index,
+      barRods: [
+        BarChartRodData(
+          fromY: 0,
+          toY:metricValue,
+          borderRadius: BorderRadius.zero,
+          color: color,
+          width: 16,
+        ),
+
+      ],
+    ));
+  }
+
+  return sections;
+}
+
