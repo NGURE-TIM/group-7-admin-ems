@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'homepage/loadpages/home.dart';
+import 'homepage/loadpages/utility.dart';
+import 'homepage/home.dart';
 void main (){
   return runApp(
       const admin()
@@ -17,7 +18,7 @@ class admin extends StatelessWidget {
         brightness: Brightness.dark,
         primaryColor:Colors.orangeAccent,
       ),
-      home:home() ,
+      home:utility() ,
     );
   }
 }

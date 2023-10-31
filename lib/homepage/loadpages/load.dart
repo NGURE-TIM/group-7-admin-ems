@@ -15,28 +15,18 @@ class Load extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: backGround,
-      appBar: AppBar(
+backgroundColor: Colors.white,
 
-        backgroundColor: backGround,
-        title:const Center(
-          child: Text(
-            'LOAD DETAILS',
-            style: TextStyle(
-              color: black,
-              fontWeight: FontWeight.bold
-          ),
-          ),
-        ),
-      ),
       body: Container(
 child: Column(
+
   children: [
     Container(
       height: 70,
     ),
-    SizedBox(
-      height: 300,
+    Container(
+      height: 380,
+      width: 800,
       child: Image.asset(path),
     ),
     Text(
@@ -47,7 +37,9 @@ child: Column(
         fontWeight:FontWeight.w800,
       ),
     ),
-
+    Container(
+      height: 40,
+    ),
     buildRows('QUANTITY :',quantity ),
     buildRows('Rating(Watts) :', rating ),
     buildRows('Hours of operation :',hours ),

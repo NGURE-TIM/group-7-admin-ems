@@ -2,13 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:admin/homepage/widgets/widgets.dart';
 import 'package:provider/provider.dart';
 import 'package:admin/homepage/energy consumption/providerLogic.dart';
-
+import'package:admin/homepage/Constants/colorConsts/colors.dart';
 
 class energy extends StatefulWidget {
+
   @override
   State<energy> createState() => _energyState();
 }
 class _energyState extends State<energy> {
+  int value=1;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -31,7 +33,7 @@ class _energyState extends State<energy> {
                   'Energy Consumption',
                 style: TextStyle(
                   fontSize: 30,
-                  color: Colors.deepOrange
+                  color: deepOrange
                 ),
 
               ),
@@ -42,7 +44,9 @@ class _energyState extends State<energy> {
               <Select>(builder:(context,selectProviderModel,child)=> Text(
                   selectProviderModel.title,
                   style: TextStyle(
-                      fontSize: 10
+                      fontSize: 10,
+
+
                   ),
 
                 ),
@@ -52,9 +56,12 @@ class _energyState extends State<energy> {
               ),
 
               Consumer<Select>(
-                builder:(context,selectProviderModel,child)=> AspectRatio(
-                  aspectRatio:  1.7,
-                  child: buildBarChart(selectProviderModel.metric , selectProviderModel.y),
+                builder:(context,selectProviderModel,child)=> Padding(
+                  padding: const EdgeInsets.only(left:10 ,right: 10),
+                  child: AspectRatio(
+                    aspectRatio:  1.8,
+                    child: buildBarChart(selectProviderModel.metric , selectProviderModel.y),
+                  ),
                 ),
               ),
               SizedBox(
@@ -64,7 +71,7 @@ class _energyState extends State<energy> {
                 'Press on top of bar-rod to see month',
                 style: TextStyle(
                     fontSize:7,
-                  color: Colors.deepOrange
+                  color: deepOrange
                 ),
               ),
               SizedBox(
@@ -84,12 +91,12 @@ class _energyState extends State<energy> {
                 children: [
                   Consumer<Select>(
                       builder:(context,selectProviderModel,child)=>
-                      buildButton('kwh',Colors.green,selectProviderModel.Status1 , 1, 'A BARGRAPH OF KWH AGAINST MONTH')),
+                      buildButton('kwh',limeGreen,selectProviderModel.Status1 , 1, 'A BARGRAPH OF KWH AGAINST MONTH')),
                   SizedBox(
                     width:10,
                   ),
                   Consumer<Select>(
-                      builder:(context,selectProviderModel,child)=> buildButton('cost',Colors.blueGrey,selectProviderModel.Status2, 2, 'A BARGRAPH OF COST AGAINST MONTH')),
+                      builder:(context,selectProviderModel,child)=> buildButton('cost',blueGreen,selectProviderModel.Status2, 2, 'A BARGRAPH OF COST AGAINST MONTH')),
                 ],
               ),
 
@@ -98,6 +105,9 @@ class _energyState extends State<energy> {
           ),
         ),
       ),
+
+
+      bottomNavigationBar: buildFloatingNavbar(value),
     );
   }
 
@@ -113,14 +123,14 @@ selectProviderModel.changeButtonStatus(button);
                     width: 80,
                     height: 30,
                     decoration: BoxDecoration(
-                        color:buttonState? Colors.green:Colors.blueGrey,
+                        color:buttonState? limeGreen: darkGreen,
                         borderRadius:BorderRadius.circular(20)
                     ),
           child: Center(
             child: Text(
               buttonname,
               style: TextStyle(
-                color:buttonState? Colors.black:Colors.white,
+                color:buttonState? black:white,
                 fontWeight: FontWeight.w800
               ),
             ),
