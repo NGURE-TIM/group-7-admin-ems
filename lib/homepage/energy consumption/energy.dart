@@ -14,6 +14,7 @@ class _energyState extends State<energy> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+
       appBar: AppBar(
         automaticallyImplyLeading: false,
         title: Text('Trends'),

@@ -7,6 +7,7 @@ import 'package:admin/homepage/loadpages/load.dart';
 import'package:admin/homepage/Constants/colorConsts/colors.dart';
 import 'package:admin/homepage/energy consumption/energy.dart';
 import 'package:floating_bottom_navigation_bar/floating_bottom_navigation_bar.dart';
+import 'package:admin/homepage/loadpages/dataEntry.dart';
 
 class MyPieChart extends StatefulWidget {
   const MyPieChart({Key? key}) : super(key: key);
@@ -87,46 +88,19 @@ buildListview (List<Utility>data) {
       padding: const EdgeInsets.all(12.0),
       child: Container(
           decoration: BoxDecoration(
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.black.withOpacity(0.5),
-                  spreadRadius: 5,
-                  blurRadius: 7,
-                  offset: Offset(0, 3), // changes position of shadow
-                ),
-              ],
-              color:jungle.withOpacity(0.4),
+              color:Colors.transparent.withOpacity(0.12),
               borderRadius: BorderRadius.circular(20)
           ),
           child:Column(
             children: [
               Text(
-                'LOADS',
+                'LOAD DATA OVERVIEW',
                 style: TextStyle(
                     fontSize: 16,
-                    color:deepOrange
+                    color:badge
                 ),
               ),
 
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  Text(
-                    'Scroll for more loads',
-                    style: TextStyle(
-                        fontSize: 7,
-                        color:badge
-                    ),
-                  ),
-                  Text(
-                    'Tap a load to view details',
-                    style: TextStyle(
-                        fontSize: 7,
-                        color:badge
-                    ),
-                  ),
-                ],
-              ),
               Expanded(
                 child: ListView.builder(itemCount: data.length,
                   itemBuilder:(context,index){
@@ -343,10 +317,13 @@ class _buildFloatingNavbarState extends State<buildFloatingNavbar> {
   @override
   Widget build(BuildContext context) {
     return FloatingNavbar(
+unselectedItemColor: Colors.black,
+     //selectedItemColor: C,
+     selectedBackgroundColor:Colors.deepOrange ,
 padding: EdgeInsets.only(bottom: 0,top: 0),
       margin: EdgeInsets.only(bottom: 0, top: 0),
-      backgroundColor: Colors.transparent,
-      width: 180,
+      backgroundColor: Colors.white,
+      width: double.infinity,
       onTap: (int index) {
         setState(() {
           widget.val=index;
@@ -354,8 +331,11 @@ padding: EdgeInsets.only(bottom: 0,top: 0),
         if(widget.val==0){
           Navigator.of(context).push(MaterialPageRoute(builder: (context)=>utility()));
         }
-        else{
+        else if (widget.val==1){
           Navigator.of(context).push(MaterialPageRoute(builder: (context)=>energy()));
+        }
+        else if (widget.val==2){
+          Navigator.of(context).push(MaterialPageRoute(builder: (context)=>dataEntry()));
         }
       },
       currentIndex: widget.val,
@@ -363,6 +343,7 @@ padding: EdgeInsets.only(bottom: 0,top: 0),
       items: [
         FloatingNavbarItem(icon: Icons.energy_savings_leaf_outlined, title: 'Load'),
         FloatingNavbarItem(icon: Icons.trending_up_sharp, title: 'Trends'),
+        FloatingNavbarItem(icon: Icons.inventory_sharp, title: 'Entry'),
       ],
     );
   }

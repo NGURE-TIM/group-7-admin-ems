@@ -8,6 +8,7 @@ class home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+
       body: Container(),
       bottomNavigationBar: buildFloatingNavbar(val),
     );

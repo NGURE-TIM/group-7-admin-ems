@@ -38,14 +38,7 @@ class _utilityState extends State<utility> {
                 padding: const EdgeInsets.only(left: 10, right: 10),
                 child: Container(
                   decoration: BoxDecoration(
-                      boxShadow: [
-                        BoxShadow(
-                          color: black.withOpacity(0.5),
-                          spreadRadius: 5,
-                          blurRadius: 7,
-                          offset: Offset(0, 3), // changes position of shadow
-                        ),
-                      ],
+
                       color: darkGreen,
                       borderRadius: BorderRadius.circular(20)
                   ),
