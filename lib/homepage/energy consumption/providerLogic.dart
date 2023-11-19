@@ -45,3 +45,20 @@ class Select extends ChangeNotifier{
 
 
 }
+
+
+
+class data extends ChangeNotifier{
+  late String month;
+  List john=['R'];
+  late double kwh;
+  late double cost;
+  data();
+  addData(String mwezi){
+    month=mwezi;
+    john.add(month);
+    notifyListeners();
+  }
+
+
+}
