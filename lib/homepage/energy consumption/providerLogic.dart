@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 
+List _john=[];
 class Select extends ChangeNotifier{
 
  late String metric='kwh';
@@ -45,20 +46,16 @@ class Select extends ChangeNotifier{
 
 
 }
-
-
-
-class data extends ChangeNotifier{
+class Data extends ChangeNotifier{
   late String month;
-  List john=['R'];
+
   late double kwh;
   late double cost;
-  data();
+ get john =>_john;
+
+
   addData(String mwezi){
-    month=mwezi;
-    john.add(month);
+    _john.add(mwezi);
     notifyListeners();
   }
-
-
 }

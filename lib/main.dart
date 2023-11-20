@@ -5,10 +5,12 @@ import 'dart:async';
 import 'package:flutter/widgets.dart';
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
-
+import 'package:provider/provider.dart';
+import 'package:admin/homepage/energy consumption/providerLogic.dart';
 
 void main () async{
   WidgetsFlutterBinding.ensureInitialized();
+
   return runApp(
       const admin()
   ) ;
@@ -17,7 +19,11 @@ class admin extends StatelessWidget {
   const admin({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (context) => Data()),
+      ],
+      child: MaterialApp(
       title: 'Admin EMS ',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
@@ -33,6 +39,7 @@ class admin extends StatelessWidget {
 
       ),
       home:utility() ,
+    )
     );
   }
 }

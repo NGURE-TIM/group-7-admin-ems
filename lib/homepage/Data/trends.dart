@@ -26,10 +26,11 @@ class Trends {
 
 }
 List<Trends> myTrends=[
-  Trends(27500, 'March  ', 6920.41),
-  Trends(20000, 'April ',4221.00),
-  Trends(25000, 'May ',5226.76),
-  Trends(22500, 'June ',5631.47),
-  Trends(23000, 'July ',5951.83),
-  Trends(24000, 'August ',8835.60),
+  Trends(780184.50, 'March  ', 27500),
+  Trends(563317.43, 'April ',20000),
+  Trends(688509.57, 'May ',25000),
+  Trends(619018.22, 'June ',22500),
+  Trends(651131, 'July ',23000),
+  Trends(651131, 'August ',23000),
+  Trends(678409.3, 'September ',23418),
 ];
