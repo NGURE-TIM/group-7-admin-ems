@@ -1,16 +1,18 @@
-# admin
+# Moi University EMS App
 
-A new Flutter project.
+Welcome to the Moi University EMS (Energy Management System) App project! This application is designed to provide detailed data about Moi University's electrical bill usage over the course of a year.
 
-## Getting Started
+## Overview
 
-This project is a starting point for a Flutter application.
+The Moi University EMS App aims to:
+- Display comprehensive data regarding the university's electrical consumption.
+- Provide insights and analysis on energy usage trends over time.
+- Enable users to track and monitor electricity expenditure efficiently.
 
-A few resources to get you started if this is your first Flutter project:
+## Features
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+- **Yearly Usage Overview**: View a summary of Moi University's electrical bill usage for each month over the past year.
+- **Detailed Analysis**: Access detailed breakdowns of energy consumption by department, building, or specific meter.
+- **User-friendly Interface**: Enjoy a seamless and intuitive user experience designed for easy navigation and data visualization.
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+  
