@@ -1,4 +1,5 @@
 # Moi University EMS App
+![App Screenshot](https://github.com/NGURE-TIM/group-7-admin-ems/blob/main/WhatsApp%20Image%202024-02-10%20at%2011.39.55_fe53b129.jpg)
 
 Welcome to the Moi University EMS (Energy Management System) App project! This application is designed to provide detailed data about Moi University's electrical bill usage over the course of a year.
 
